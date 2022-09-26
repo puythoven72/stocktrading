@@ -1,0 +1,83 @@
+<form class="d-flex" role="search" action="{% url 'home' %}" method="POST">
+  {% csrf_token %}
+  <input
+    class="form-control me-2"
+    name="symbol_search"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+{% if stock_info %}
+<div>
+  <img src={{stock_info.logo_url}} alt={{stock_info.longName}}>
+</div>
+
+<div class="container text-center">
+
+  <div class="row">
+    <div class="col">
+      <h4>Symbol:</h4>
+    </div>
+    <div class="col">{{ stock_info.symbol }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Previous Close:</h4>
+    </div>
+    <div class="col">{{ stock_info.previousClose }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Open:</h4>
+    </div>
+    <div class="col">{{ stock_info.open }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Day High:</h4>
+    </div>
+    <div class="col">{{ stock_info.dayHigh }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Day Low:</h4>
+    </div>
+    <div class="col">{{ stock_info.dayLow }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>10 Day Average Volume:</h4>
+    </div>
+    <div class="col">{{ stock_info.averageVolume10days }}</div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col">
+      <h4>Current Price:</h4>
+    </div>
+    <div class="col">{{ stock_info.currentPrice }}</div>
+  </div>
+</div>
+<div>
+  <button type="button" class="btn btn-success">Buy</button>
+</div>
+{% endif %}
+
+
+<form action="{% url 'test' 1 %}" method="POST">
+  {% csrf_token %}
+  <a href="{% url 'home' %}">Cancel</a>
+  <input class="btn btn-sm btn-danger" type="submit" value="test">
+ </form>
+
+
+
