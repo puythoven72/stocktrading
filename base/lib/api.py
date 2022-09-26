@@ -8,7 +8,7 @@ import yfinance as yf
 
 
 
-def                     getstock(symbol):
+def getstock(symbol):
     print("running")
 
     msft = yf.Ticker(symbol)

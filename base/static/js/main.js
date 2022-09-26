@@ -10,10 +10,11 @@ function getStockTotal() {
     let qty = document.querySelector('#qty_' + this.id);
     let vlu = document.querySelector('#vlu_' + this.id);
     let sym = document.querySelector('#sym' + this.id);
+    let dte = document.querySelector('#dte_' + this.id);
     let totStockVlu = qty.innerHTML * vlu.innerHTML;
 
     let totStockDiv = document.querySelector("#stockSymVlu");
-    totStockDiv.innerHTML = `${sym.innerHTML} Total Value:  $${totStockVlu}`;
+    totStockDiv.innerHTML = `${sym.innerHTML} Total Valuexx:  $${totStockVlu} On ${dte}`;
 
 
 }

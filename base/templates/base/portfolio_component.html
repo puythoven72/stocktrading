@@ -21,7 +21,7 @@
           <!-- <td>{{ stock.symbol }}</td> -->
           <td id="qty_{{ stock.id }}">{{ stock.quantity }}</td>
           <td id="vlu_{{ stock.id }}">{{ stock.value }}</td>
-          <td>{{ stock.stockbuydate }}</td>
+          <td id="dte_{{ stock.id }}">{{ stock.stockbuydate }}</td>
           <td><input type="radio" id={{ stock.id}} name="stock_choice" ></td>
         </tr>
         {% endfor %}
