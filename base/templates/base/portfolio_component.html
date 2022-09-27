@@ -8,20 +8,23 @@
         <tr>
           <th scope="col">Stock</th>
           <th scope="col">Quantity</th>
-          <th scope="col">Value</th>
+          <th scope="col">Purchase Value</th>
+          <th scope="col">Current Value</th>
           <th scope="col">Date</th>
           <th scope="col">Select</th>
         </tr>
       </thead>
       <tbody>
+    
         {% for stock in stocks %}
-
         <tr id>
           <th scope="row" id="sym{{ stock.id }}">{{ stock.symbol }}</th>
           <!-- <td>{{ stock.symbol }}</td> -->
           <td id="qty_{{ stock.id }}">{{ stock.quantity }}</td>
           <td id="vlu_{{ stock.id }}">{{ stock.value }}</td>
+          <td id="crnt_{{ stock.id }}">{{ stock.current }}</td>
           <td id="dte_{{ stock.id }}">{{ stock.stockbuydate }}</td>
+         
           <td><input type="radio" id={{ stock.id}} name="stock_choice" ></td>
         </tr>
         {% endfor %}

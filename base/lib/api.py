@@ -5,7 +5,8 @@ import json
 import alpaca_trade_api as tradeapi
 from alpaca_trade_api import Stream
 import yfinance as yf
-
+from .api_helper import format_values
+from ..models import Stocks
 
 
 def getstock(symbol):
@@ -18,16 +19,24 @@ def getstock(symbol):
     
     return format_values(stock_data)
          
+def get_portfolio_current_val():
+    x = Stocks.objects.all().values_list('symbol', flat=True).distinct()
+    current_price_dict = {}
+    print(x)
+    for y in x:
+        print('whats happenin ' + y)
+     
+        print('got here')
+        lookup = getstock(y)
+        print('got here 2')
+        # current_price_dict = {lookup['symbol'] : lookup['currentPrice']}
+        # p["current"] = current_portfolio_prices[current_sym]
+        current_price_dict[lookup['symbol']] =  lookup['currentPrice']
+        print('got here 3')
+    print(current_price_dict)
+    return current_price_dict
 
 
-def format_values(stock_data):
-    if len(stock_data) > 0:
-        for k, v in stock_data.items():
-            if k == "currentPrice" or k == "previousClose" or k == "open" or k == "dayHigh" or k == "dayLow":
-                stock_data[k] = format(v, ',.2f')
-            if k == "averageVolume10days":
-                stock_data[k] ="{:,}".format(v)    
-    return stock_data
 
 
     # #quotes = api.get_quotes(symbol, limit=10)

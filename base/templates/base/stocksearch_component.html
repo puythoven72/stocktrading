@@ -5,7 +5,7 @@
 </form>
 
 {% if stock_info %}
-<form action="{% url 'home' %}" method="POST">
+<form action="{% url 'success' %}" method="POST">
   {% csrf_token %}
   <div>
     <img src={{stock_info.logo_url}} alt={{stock_info.longName}}>
@@ -73,7 +73,7 @@
       <div class="col">
         <h4>Quantity:</h4>
       </div>
-      <div class="col"><input class="form-control me-2" id="quantity" type="number" name="quantity">
+      <div class="col"><input class="form-control me-2" id="quantity" type="number" name="quantity" value=0>
       
         <button type="submit" class="btn btn-success" name="buy_btn">Buy</button>
       </div>
