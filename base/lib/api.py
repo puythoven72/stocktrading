@@ -1,4 +1,5 @@
 
+from re import T
 from .stream_config import api_key,api_secret,base_url
 from django.http import HttpResponse
 import json
@@ -7,33 +8,35 @@ from alpaca_trade_api import Stream
 import yfinance as yf
 from .api_helper import format_values
 from ..models import Stocks
+from datetime import date
 
 
 def getstock(symbol):
-    print("running")
-
     msft = yf.Ticker(symbol)
-    raw_json = json.dumps(msft.info)
   
+    raw_json = json.dumps(msft.info)
+
     stock_data = json.loads(raw_json)
-    
+
     return format_values(stock_data)
+
+
+def add_current_price(stock_dict):
+    current_portfolio_prices = get_portfolio_current_val()
+    for p in stock_dict:
+        current_sym = p['symbol']
+        p["current"] = current_portfolio_prices[current_sym]
+    return stock_dict
+
+
          
 def get_portfolio_current_val():
-    x = Stocks.objects.all().values_list('symbol', flat=True).distinct()
+    symbol_list = Stocks.objects.all().values_list('symbol', flat=True).distinct()
     current_price_dict = {}
-    print(x)
-    for y in x:
-        print('whats happenin ' + y)
-     
-        print('got here')
-        lookup = getstock(y)
-        print('got here 2')
-        # current_price_dict = {lookup['symbol'] : lookup['currentPrice']}
-        # p["current"] = current_portfolio_prices[current_sym]
+
+    for symbol in symbol_list:
+        lookup = getstock(symbol)
         current_price_dict[lookup['symbol']] =  lookup['currentPrice']
-        print('got here 3')
-    print(current_price_dict)
     return current_price_dict
 
 

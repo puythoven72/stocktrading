@@ -10,3 +10,6 @@ def format_values(stock_data):
                 stock_data[k] ="{:,}".format(v)    
     return stock_data
 
+
+
+
