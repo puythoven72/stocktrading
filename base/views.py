@@ -5,25 +5,35 @@ from .lib.stream import OpenSocket
 import alpaca_trade_api as tradeapi
 from alpaca_trade_api import Stream
 from .models import Stocks
-from .lib.api import getstock,add_current_price
+from .lib.api import getstock,add_current_price,get_tot_qty
 import datetime
 
 
 def home(request):
     stock_info = {}
 
-    stock_dict= list(Stocks.objects.values())
-    updated_stock = add_current_price(stock_dict)
+    all_stocks =get_tot_qty()
+
+
+
+   # stock_dict= list(Stocks.objects.values())
+    #updated_stock = add_current_price(stock_dict)
    
   
     if request.method == 'POST' and 'search_btn' in request.POST:
         sym = request.POST.get('symbol_search')
         print(sym)
         stock_info = getstock(sym)
-        context = {'stocks' : updated_stock, 'stock_info' : stock_info}
+        context = { 'stock_info' : stock_info ,'all_stocks' : all_stocks}
+        return render (request,'base/home.html',context)
+
+    if request.method == 'POST' and 'snapshot_btn' in request.POST:
+        print('in stnapshot')
+        all_stocks = get_tot_qty(True)
+        context = { 'stock_info' : stock_info ,'all_stocks' : all_stocks,'disp_current_price' : 'true'}
         return render (request,'base/home.html',context)
    
-    context = {'stocks' : updated_stock, 'stock_info' : stock_info}
+    context = { 'all_stocks' : all_stocks}
     return render (request,'base/home.html',context)
 
 def success(request):

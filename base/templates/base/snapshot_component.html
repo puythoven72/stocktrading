@@ -1,0 +1,47 @@
+{% load static %}
+
+<div class="container">
+  <form method="POST" name ="snapshot" action="{% url 'home' %}">
+    {% csrf_token %}
+    <button class="btn" name ="snapshot_btn" >Fetch Current Portfolio Prices </button>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Stock</th>
+          <th scope="col">Total Shares</th>
+          
+          <th scope="col">Current Value</th>
+          
+          <th scope="col">Select</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+     
+
+   
+
+
+        {% for stock in all_stocks %}
+        
+        <tr >
+          <th scope="row" id="sym{{ stock.id }}">{{stock.symbol}}</th>
+       
+          <td id="qty_{{ stock.id }}">{{stock.tot_quant}}</td>
+          <td id="crnt_{{ stock.id }}">{{stock.current_price}}</td>
+   
+         
+          <td><input type="radio" id={{ stock.id }} name="stock_choice" ></td>
+        </tr>
+        {% endfor %} 
+
+         
+      </tbody>
+    </table> 
+
+    <div id="stockSymVlu"></div>
+  </form>
+  
+  <script src="{% static 'js/main.js' %}"></script>
+</div>

@@ -7,5 +7,6 @@ urlpatterns = [
    
     # path('<str:sbmtFlag>',views.home,name='home'),
     path('',views.home,name='home'),
+    
     path('success/',views.success,name='success'),
 ] 
