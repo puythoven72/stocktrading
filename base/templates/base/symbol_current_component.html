@@ -1,0 +1,51 @@
+{% if stock_info %}
+
+
+
+  <div class="row">
+    <div class="col">
+      <h4>Previous Close:</h4>
+    </div>
+    <div class="col">{{ stock_info.previousClose }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Open:</h4>
+    </div>
+    <div class="col">{{ stock_info.open }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Day High:</h4>
+    </div>
+    <div class="col">{{ stock_info.dayHigh }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Day Low:</h4>
+    </div>
+    <div class="col"> {{ stock_info.dayLow }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>10 Day Average Volume:</h4>
+    </div>
+    <div class="col"> {{ stock_info.averageVolume10days }} </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <h4>Current Price:</h4>
+    </div>
+    <div class="col">{{ stock_info.currentPrice }}</div>
+  </div>
+
+
+
+</div>
+{% endif %}

@@ -1,0 +1,23 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="container text-center">
+  <div class="row">
+    <div>
+      <img src="{{stock_info.logo_url}}" alt="{{stock_info.longName}}" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">{{ stock_info.symbol }}</div>
+  </div>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">{% include 'base/portfolio_component.html' %}</div>
+      <div class="col">{% include 'base/symbol_current_component.html' %}</div>
+    </div>
+  </div>
+
+  <a href="{% url 'home' %}"> back</a>
+
+</div>
+{% endblock %}

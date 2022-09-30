@@ -11,10 +11,7 @@ import datetime
 
 def home(request):
     stock_info = {}
-
-    all_stocks =get_tot_qty()
-
-
+    all_stocks = get_tot_qty()
 
    # stock_dict= list(Stocks.objects.values())
     #updated_stock = add_current_price(stock_dict)
@@ -51,4 +48,21 @@ def success(request):
       
             return redirect('home')
 
+def shareinfo(request,symbol):
+    
+    stock_shares = Stocks.objects.filter(symbol=symbol)
+    stock_info = getstock(symbol)
+
+    context={'stocks': stock_shares, 'stock_info' : stock_info}
+    return render (request,'base/stock_information.html',context)
+
+def history(request):
+    stocks = Stocks.objects.all()
+    context={'stocks' : stocks}
+    return render (request,'base/portfolio_history.html',context)
+
+
+
+
+   
     

@@ -26,7 +26,8 @@
         {% for stock in all_stocks %}
         
         <tr >
-          <th scope="row" id="sym{{ stock.id }}">{{stock.symbol}}</th>
+          <th scope="row" id="sym{{ stock.id }}"><a href="{%  url 'shareinfo' stock.symbol %}">{{stock.symbol}}</a> </th>
+         
        
           <td id="qty_{{ stock.id }}">{{stock.tot_quant}}</td>
           <td id="crnt_{{ stock.id }}">{{stock.current_price}}</td>
