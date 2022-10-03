@@ -1,11 +1,18 @@
 {% load static %}
+<form method="POST" name ="snapshot" action="{% url 'home' %}">
+  {% csrf_token %}
+  <div>
+    <button class="btn btn-info  snapshot_btn " name ="snapshot_btn" >Refresh Current Price </button>
+  
+  </div>
 
-<div class="container">
-  <form method="POST" name ="snapshot" action="{% url 'home' %}">
-    {% csrf_token %}
-    <button class="btn" name ="snapshot_btn" >Fetch Current Portfolio Prices </button>
+</form>
 
-    <table class="table">
+<div class="container card snapshot_form">
+ 
+    
+
+    <table class="table card-body ">
       <thead>
         <tr>
           <th scope="col">Stock</th>
@@ -18,11 +25,6 @@
       </thead>
       <tbody>
         
-     
-
-   
-
-
         {% for stock in all_stocks %}
         
         <tr >
@@ -42,7 +44,12 @@
     </table> 
 
     <div id="stockSymVlu"></div>
-  </form>
   
   <script src="{% static 'js/main.js' %}"></script>
+</div>
+<div class="row">
+  <small>Note:</small>
+</div>
+<div class="row">
+ <small>To Replace the column with '!', with the current stock Price. Click 'Refresh Current Price'. Depending on the size of portfolio this may take a few minutes!</small>
 </div>

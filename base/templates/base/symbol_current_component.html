@@ -1,51 +1,60 @@
 {% if stock_info %}
 
+<div class="card ">
+<div class="card-body">
 
-
-  <div class="row">
+  <div class="row stockData">
     <div class="col">
-      <h4>Previous Close:</h4>
+      <h5>Symbol:</h5>
+    </div>
+    <div class="col">{{ stock_info.symbol }}</div>
+  </div>
+
+
+  <div class="row stockData">
+    <div class="col">
+      <h5>Previous Close:</h5>
     </div>
     <div class="col">{{ stock_info.previousClose }}</div>
   </div>
 
-  <div class="row">
+  <div class="row stockData">
     <div class="col">
-      <h4>Open:</h4>
+      <h5>Open:</h5>
     </div>
     <div class="col">{{ stock_info.open }}</div>
   </div>
 
-  <div class="row">
+  <div class="row stockData">
     <div class="col">
-      <h4>Day High:</h4>
+      <h5>Day High:</h5>
     </div>
     <div class="col">{{ stock_info.dayHigh }}</div>
   </div>
 
-  <div class="row">
+  <div class="row stockData">
     <div class="col">
-      <h4>Day Low:</h4>
+      <h5>Day Low:</h5>
     </div>
     <div class="col"> {{ stock_info.dayLow }}</div>
   </div>
 
-  <div class="row">
+  <div class="row stockData">
     <div class="col">
-      <h4>10 Day Average Volume:</h4>
+      <h5>10 Day Average Volume:</h5>
     </div>
     <div class="col"> {{ stock_info.averageVolume10days }} </div>
   </div>
 
 
-  <div class="row">
+  <div class="row stockData">
     <div class="col">
-      <h4>Current Price:</h4>
+      <h5>Current Price:</h5>
     </div>
     <div class="col">{{ stock_info.currentPrice }}</div>
   </div>
 
 
-
+</div>
 </div>
 {% endif %}

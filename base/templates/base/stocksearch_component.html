@@ -1,101 +1,101 @@
+<div class="stockSearch">
 <form class="d-flex" role="search" action="{% url 'home' %}" method="POST">
   {% csrf_token %}
   <input class="form-control me-2" name="symbol_search" type="search" placeholder="Search" aria-label="Search" />
-  <button class="btn btn-outline-success" type="submit" name="search_btn">Search</button>
+  <button class="btn btn-info search_btn" type="submit" name="search_btn" >Search</button>
 </form>
-
+</div>
 {% if stock_info %}
-<form action="{% url 'success' %}" method="POST">
-  {% csrf_token %}
-  <div>
-    <img src={{stock_info.logo_url}} alt={{stock_info.longName}}>
+<div class="card">
+  <form action="{% url 'success' %}" method="POST" class="card-body searchForm">
+    {% csrf_token %}
+    <div class="stockData">
+      <img src={{stock_info.logo_url}} alt={{stock_info.longName}}>
+    </div>
+
+    <div class="container text-center">
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>Symbol:</h5>
+        </div>
+        <div class="col"><input class="form-control me-2" id="symbol" type="text" name="symbol"
+            value="{{ stock_info.symbol }}" readonly></div>
+      </div>
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>Previous Close:</h5>
+        </div>
+        <div class="col"><input class="form-control me-2" id="prev_close" type="number" name="prev_close"
+            value="{{ stock_info.previousClose }}" readonly></div>
+      </div>
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>Open:</h5>
+        </div>
+        <div class="col"><input class="form-control me-2" id="open" type="number" name="open"
+            value="{{ stock_info.open }}" readonly>
+        </div>
+      </div>
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>Day High:</h5>
+        </div>
+        <div class="col"><input class="form-control me-2" id="day_high" type="number" name="day_high"
+            value="{{ stock_info.dayHigh }}" readonly></div>
+      </div>
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>Day Low:</h5>
+        </div>
+        <div class="col"> <input class="form-control me-2" id="day_low" type="number" name="day_low"
+            value="{{ stock_info.dayLow }}" readonly></div>
+      </div>
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>10 Day Average Volume:</h5>
+        </div>
+        <div class="col"> <input class="form-control me-2" id="10_avg" type="text" name="10_avg"
+            value="{{ stock_info.averageVolume10days }}" readonly></div>
+      </div>
+
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>Current Price:</h5>
+        </div>
+        <div class="col"><input class="form-control me-2" id="current_price" type="number" name="current_price"
+            value="{{ stock_info.currentPrice }}" readonly></div>
+      </div>
+
+      <div class="row stockData">
+        <div class="col">
+          <h5>Quantity:</h5>
+        </div>
+        <div class="col"><input class="form-control me-2" id="quantity" type="number" name="quantity" value=0></div>
+      </div>
+
+      <div class="row stockData"></div>
+        <div class="col">
+          <button type="submit" class="btn buy_button" name="buy_btn">Buy</button>
+        </div>
+      </div>
+      <div>
+      </div>
+  </form>
+</div>
+{% else %}
+<div class="card">
+  <div class="card-body">
+<p> Enter A Search Criteria To Pull Current Stock Information</p>
   </div>
 
-  <div class="container text-center">
-
-    <div class="row">
-      <div class="col">
-        <h4>Symbol:</h4>
-      </div>
-      <div class="col"><input class="form-control me-2" id="symbol" type="text" name="symbol"
-          value="{{ stock_info.symbol }}" readonly></div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h4>Previous Close:</h4>
-      </div>
-      <div class="col"><input class="form-control me-2" id="prev_close" type="number" name="prev_close"
-          value="{{ stock_info.previousClose }}" readonly></div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h4>Open:</h4>
-      </div>
-      <div class="col"><input class="form-control me-2" id="open" type="number" name="open" value="{{ stock_info.open }}" readonly>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h4>Day High:</h4>
-      </div>
-      <div class="col"><input class="form-control me-2" id="day_high" type="number" name="day_high"
-          value="{{ stock_info.dayHigh }}" readonly></div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h4>Day Low:</h4>
-      </div>
-      <div class="col"> <input class="form-control me-2" id="day_low" type="number" name="day_low"
-          value="{{ stock_info.dayLow }}" readonly></div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h4>10 Day Average Volume:</h4>
-      </div>
-      <div class="col"> <input class="form-control me-2" id="10_avg" type="text" name="10_avg"
-          value="{{ stock_info.averageVolume10days }}" readonly></div>
-    </div>
 
 
-    <div class="row">
-      <div class="col">
-        <h4>Current Price:</h4>
-      </div>
-      <div class="col"><input class="form-control me-2" id="current_price" type="number" name="current_price"
-          value="{{ stock_info.currentPrice }}" readonly></div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h4>Quantity:</h4>
-      </div>
-      <div class="col"><input class="form-control me-2" id="quantity" type="number" name="quantity" value=0>
-      
-        <button type="submit" class="btn btn-success" name="buy_btn">Buy</button>
-      </div>
-      
-
-
-
-
-
-
-
-    </div>
-    <div>
-
-
-    </div>
-
-
-
-
-    <a href="{% url 'home' %}">Cancel</a>
-
-</form>
 </div>
 {% endif %}

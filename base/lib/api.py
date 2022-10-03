@@ -46,6 +46,7 @@ def get_tot_qty(get_current_price = False):
   
     stock_data_list = []
     symbol_list = Stocks.objects.all().values_list('symbol', flat=True).distinct()
+    
     count = 0
     for sym in symbol_list:
         count += 1

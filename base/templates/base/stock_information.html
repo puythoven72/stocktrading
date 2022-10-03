@@ -1,13 +1,10 @@
 {% extends 'main.html' %} {% block content %}
 
-<div class="container text-center">
+<div class="container text-center card">
   <div class="row">
     <div>
-      <img src="{{stock_info.logo_url}}" alt="{{stock_info.longName}}" />
+      <img src="{{stock_info.logo_url}}" alt="{{stock_info.longName}}" class="card-body" />
     </div>
-  </div>
-  <div class="row">
-    <div class="col">{{ stock_info.symbol }}</div>
   </div>
 
   <div class="container text-center">
