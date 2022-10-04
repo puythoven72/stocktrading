@@ -63,17 +63,3 @@ def get_tot_qty(get_current_price = False):
         stock_data['id'] = count
         stock_data_list.append(stock_data)
     return stock_data_list
-
-
-
-    # #quotes = api.get_quotes(symbol, limit=10)
-    # quotes = api.get_trades(symbol, limit=10)
-    # #quotes = api.get_trades(symbol, limit = 10).df
-    # # quotes = api.get_quotes(symbol, limit = 10).df
-    # print(quotes)
-    # # for quote in quotes:
-    # #     print(quote.p)
-
-    # # gme_snapshot = api.list_positions
-    # # latest_quote = gme_snapshot.latest_quote
-    # # print(gme_snapshot)
