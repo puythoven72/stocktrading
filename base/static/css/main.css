@@ -1,6 +1,6 @@
 
 body{
-    background-color: #31708e;
+    background-color: #8Fc1E3;
 
 }
 
@@ -26,17 +26,18 @@ body{
     }
 
 a {
-    color: #31708e;
+    color: #f7f9FB;
 }
 
 a:hover{
-    color: #f7f9FB;
+    color: #8Fc1E3;
 }
   
 
 .card{
-  background-color:#8Fc1E3;
+  background-color:#31708e;
   color: #f7f9FB;
+  margin-bottom: 10px;
 }
 
 .stockSearch{
@@ -49,7 +50,7 @@ a:hover{
 }
 
 .buy_button{
-    background-color: #5085A5;
+    background-color: #00a1de;
     color: #f7f9FB;
 }
 

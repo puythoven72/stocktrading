@@ -1,5 +1,5 @@
 {% load static %}
-<form method="POST" name ="snapshot" action="{% url 'home' %}">
+<form method="POST" name ="current_price" action="{% url 'home' %}">
   {% csrf_token %}
   <div>
     <button class="btn btn-info  snapshot_btn " name ="snapshot_btn" >Refresh Current Price </button>
@@ -9,9 +9,8 @@
 </form>
 
 <div class="container card snapshot_form">
- 
-    
-
+  <div class="row"><h4>Portfolio Snapshot</h4></div>
+ <form name="snapshot">
     <table class="table card-body ">
       <thead>
         <tr>
@@ -42,7 +41,7 @@
          
       </tbody>
     </table> 
-
+  </form>
     <div id="stockSymVlu"></div>
   
   <script src="{% static 'js/main.js' %}"></script>

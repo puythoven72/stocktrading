@@ -1,24 +1,20 @@
-
-from re import T
-from .stream_config import api_key,api_secret,base_url
-from django.http import HttpResponse
 import json
-import alpaca_trade_api as tradeapi
-from alpaca_trade_api import Stream
 import yfinance as yf
 from .api_helper import format_values
 from ..models import Stocks
-from datetime import date
 
 
 def getstock(symbol):
-    msft = yf.Ticker(symbol)
-  
-    raw_json = json.dumps(msft.info)
-
-    stock_data = json.loads(raw_json)
-
-    return format_values(stock_data)
+    stock_data = {}
+    try:
+        msft = yf.Ticker(symbol)
+        raw_json = json.dumps(msft.info)
+        stock_data = json.loads(raw_json)
+        return format_values(stock_data)
+    except:
+        print("An exception occurred in getstock")
+        return stock_data
+ 
 
 
 def add_current_price(stock_dict):

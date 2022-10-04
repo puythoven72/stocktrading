@@ -1,9 +1,13 @@
 <div class="stockSearch">
-<form class="d-flex" role="search" action="{% url 'home' %}" method="POST">
-  {% csrf_token %}
-  <input class="form-control me-2" name="symbol_search" type="search" placeholder="Search" aria-label="Search" />
-  <button class="btn btn-info search_btn" type="submit" name="search_btn" >Search</button>
-</form>
+  <form class="d-flex" role="search" action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    
+    <div class="input-group">
+        <input class="form-control me-2" name="symbol_search" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-info search_btn" type="submit" name="search_btn">Search</button>
+      
+      </div>
+  </form>
 </div>
 {% if stock_info %}
 <div class="card">
@@ -16,7 +20,7 @@
     <div class="container text-center">
 
       <div class="row stockData">
-        <div class="col">
+        <div class="col ">
           <h5>Symbol:</h5>
         </div>
         <div class="col"><input class="form-control me-2" id="symbol" type="text" name="symbol"
@@ -81,18 +85,18 @@
       </div>
 
       <div class="row stockData"></div>
-        <div class="col">
-          <button type="submit" class="btn buy_button" name="buy_btn">Buy</button>
-        </div>
+      <div class="col">
+        <button type="submit" class="btn btn-info buy_button" name="buy_btn">Buy</button>
       </div>
-      <div>
-      </div>
+    </div>
+    <div>
+    </div>
   </form>
 </div>
 {% else %}
 <div class="card">
   <div class="card-body">
-<p> Enter A Search Criteria To Pull Current Stock Information</p>
+    <p> Enter A Valid Stock Symbol To Pull Current Stock Information</p>
   </div>
 
 
