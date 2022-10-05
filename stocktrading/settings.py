@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://my-url.co.shit',]
+CSRF_TRUSTED_ORIGINS = ['https://web-production-418b.up.railway.app',]
+
 
 # Application definition
 
