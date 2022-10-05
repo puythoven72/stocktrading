@@ -1,0 +1,75 @@
+
+body{
+    background-color: #8Fc1E3;
+
+}
+
+.messages{
+    color: red;
+}
+.nav{
+    background-color:#c1d4dd;
+    
+}
+
+.navbar{
+    margin-bottom:10px;
+}
+
+.nav-link .navbar-brand{
+    color: #f7f9FB;
+}
+
+.search_btn{
+    background-color: #00a1de;
+    color: #f7f9FB;
+    }
+
+a {
+    color: #f7f9FB;
+}
+
+a:hover{
+    color: #8Fc1E3;
+}
+  
+
+.card{
+  background-color:#31708e;
+  color: #f7f9FB;
+  margin-bottom: 10px;
+}
+
+.stockSearch{
+    margin: 10px 0 10px 0;
+}
+
+
+.stockData{
+    margin-bottom: 10px;
+}
+
+.buy_button{
+    background-color: #00a1de;
+    color: #f7f9FB;
+}
+
+.snapshot_btn{
+    background-color: #00a1de;
+    color: #f7f9FB;
+    margin: 10px 0 10px 0;
+    }
+
+.snapshot_form{
+    margin-top: 10px;
+}
+
+.history_body {
+    margin-top: 20px;
+}
+
+small{
+    color: #f7f9FB;
+}
+
+
