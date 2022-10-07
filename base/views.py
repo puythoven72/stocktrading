@@ -45,7 +45,7 @@ def success(request):
         action = "Buy"
         
         current_buy = (float(current_price) * float(qty)) 
-        print(current_buy)
+       
         if(float(amt) < float(current_buy)):
              messages.error(request,'Funds less then Buy Price') 
              return redirect('home')
