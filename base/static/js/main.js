@@ -1,5 +1,4 @@
 var radios = document.forms["snapshot"].elements["stock_choice"];
-
 if (radios) {
     for (var i = 0, max = radios.length; i < max; i++) {
 
@@ -24,3 +23,5 @@ function getStockTotal() {
     totStockDiv.innerHTML = `${sym.innerHTML} Total Value:  $${totStockVlu.toFixed(2)} `;
 
 }
+
+

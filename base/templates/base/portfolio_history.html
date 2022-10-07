@@ -9,7 +9,7 @@
           <th scope="col">Quantity</th>
           <th scope="col">Purchase Value</th>
           <th scope="col">Date</th>
-    
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@
           <td id="qty_{{ stock.id }}">{{ stock.quantity }}</td>
           <td id="vlu_{{ stock.id }}">{{ stock.value }}</td>
           <td id="dte_{{ stock.id }}">{{ stock.stockbuydate }}</td>
-     
+          <td id="act_{{ stock.id }}">{{ stock.action }}</td>
         </tr>
         {% endfor %}
       </tbody>
