@@ -4,12 +4,10 @@ This is a project I used to learn the fundamentals of python with django.
 
 
 ## Appendix
-
-s
 **Base - Contains all the project code.
 ***lib- Contains API code and helper files for API.
 ***Templates- Contains all the code html pages.
-***Static- Contains jS and CSS files.
+***Static- Contains JS and CSS files.
 
 **StockTrading - Global settings for App
 
