@@ -33,6 +33,14 @@ a {
 a:hover{
     color: #8Fc1E3;
 }
+
+.reset_link{
+    color: #f7f9FB;
+}
+
+.reset_link:hover{
+    color: #00a1de;
+}
   
 
 .card{
