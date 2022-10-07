@@ -2,10 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-   
-    # path('<str:pk>',views.test,name='test'),
-   
-    # path('<str:sbmtFlag>',views.home,name='home'),
+    path('reset_account/',views.reset_account,name='reset_account'),
     path('',views.home,name='home'),
     path('success/',views.success,name='success'),
     path('shareinfo/<symbol>/', views.shareinfo,name='shareinfo'),

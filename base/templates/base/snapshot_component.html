@@ -1,54 +1,65 @@
 {% load static %}
-<form method="POST" name ="current_price" action="{% url 'home' %}">
+<form method="POST" name="current_price" action="{% url 'home' %}">
   {% csrf_token %}
   <div>
-    <button class="btn btn-info  snapshot_btn " name ="snapshot_btn" >Refresh Current Value </button>
-  
+    <button class="btn btn-info  snapshot_btn " name="snapshot_btn">Refresh Current Value </button>
+
+  </div>
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <div><a href="{% url 'reset_account' %}">Reset Account</a></div>
+      </div>
+    </div>
   </div>
 
 </form>
 
 <div class="container card snapshot_form">
-  <div class="row"><h4>Portfolio Snapshot</h4></div>
- <form name="snapshot">
+  <div class="row">
+    <h4>Portfolio Snapshot</h4>
+  </div>
+  <form name="snapshot">
     <table class="table card-body ">
       <thead>
         <tr>
           <th scope="col">Stock</th>
           <th scope="col">Total Shares</th>
-          
+
           <th scope="col">Current Value</th>
-          
+
           <th scope="col">Select</th>
         </tr>
       </thead>
       <tbody>
-        
+
         {% for stock in all_stocks %}
-        
-        <tr >
-          <th scope="row" id="sym{{ stock.id }}"><a href="{%  url 'shareinfo' stock.symbol %}">{{stock.symbol}}</a> </th>
-         
-       
+
+        <tr>
+          <th scope="row" id="sym{{ stock.id }}"><a href="{%  url 'shareinfo' stock.symbol %}">{{stock.symbol}}</a>
+          </th>
+
+
           <td id="qty_{{ stock.id }}">{{stock.tot_quant}}</td>
           <td id="crnt_{{ stock.id }}">{{stock.current_price}}</td>
-   
-         
-          <td><input type="radio" id={{ stock.id }} name="stock_choice" ></td>
-        </tr>
-        {% endfor %} 
 
-         
+
+          <td><input type="radio" id={{ stock.id }} name="stock_choice"></td>
+        </tr>
+        {% endfor %}
+
       </tbody>
-    </table> 
+    </table>
   </form>
-    <div id="stockSymVlu"></div>
+  <div id="stockSymVlu"></div>
   
-  <script src="{% static 'js/main.js' %}"></script>
+  
 </div>
 <div class="row">
   <small>Note:</small>
 </div>
 <div class="row">
- <small>To Replace '!', with the current stock Price. Click 'Refresh Current Value'. Depending on the size of portfolio this may take a few minutes!</small>
+  <small>To Replace '!', with the current stock Price. Click 'Refresh Current Value'. Depending on the size of portfolio
+    this may take a few minutes!</small>
 </div>
+<script src="{% static 'js/main.js' %}"></script>

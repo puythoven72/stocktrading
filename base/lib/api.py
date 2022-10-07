@@ -4,6 +4,7 @@ from .api_helper import format_values
 from ..models import Stocks,User
 import datetime
 
+
 def getstock(symbol):
     stock_data = {}
     try:
@@ -36,8 +37,6 @@ def get_portfolio_current_val():
     return current_price_dict
 
 
-
-
 def get_all_tot_qty(get_current_price = False):
   
     stock_data_list = []
@@ -53,18 +52,6 @@ def get_all_tot_qty(get_current_price = False):
         else:
             stock_data['current_price'] = '!'
         total_Quant = get_stk_qty(sym)
-        # mydata = Stocks.objects.filter(symbol= sym).values()
-        # total_Quant = 0
-
-        # for data in mydata:
-        #     stock_action = data['action']
-        #     print(stock_action)
-        #     if stock_action == 'Buy':
-        #         total_Quant = total_Quant + data['quantity']
-        #     else:
-        #         total_Quant = total_Quant - data['quantity']
-
-            
         stock_data['symbol'] = sym
         stock_data['tot_quant'] = total_Quant
         stock_data['id'] = count
@@ -73,36 +60,53 @@ def get_all_tot_qty(get_current_price = False):
 
 
 
-def save_action(symbol,qty,current_price,action,change_amt):
+def save_action(symbol,qty,current_price,action):
+   
     if qty != "" and int(qty) > 0 and current_price != "":
-        
-        stock=Stocks()
-        stock.symbol = symbol
-        stock.value = current_price
-        stock.quantity = qty
-        stock.stockbuydate = datetime.datetime.now()
-        stock.action = action
-        stock.save()
-        
-        user = User.objects.get(firstName="Stock")
-        amt = get_user_amt()
-        if (action == 'Buy'):
-            try:
-                user.amount = float(amt) - float(change_amt)
-                user.save() 
-                return True
-            except:
-                print("error in Buying funds")
-        else:
-             try:
-                user.amount = float(amt) + float(change_amt)
-                user.save() 
-                return True
-             except:
-                print("error in Selling funds")    
-            
+        try:
+            stock=Stocks()
+            stock.symbol = symbol
+            stock.value = current_price
+            stock.quantity = qty
+            stock.stockbuydate = datetime.datetime.now()
+            stock.action = action
+            stock.save()
+            return True
+        except:
+            print('error saving stock action')    
+
+                
     else:
         return False
+
+
+def save_user_amt(action,change_amt):
+    user = User.objects.get(firstName="Stock")
+    amt = get_user_amt()
+    if (action == 'Buy'):
+        try:
+            user.amount = float(amt) - float(change_amt)
+            user.save() 
+            return True
+        except:
+            print("error in Buying funds")
+    elif (action == 'Sell'):
+        try:
+            user.amount = float(amt) + float(change_amt)
+            user.save() 
+            return True
+        except:
+            print("error in Selling funds")
+            return False    
+    else:
+        try:
+            user.amount =  change_amt
+            user.save() 
+            return True
+        except:
+            print("error in Resetting funds")
+            return False
+
 
 
 def get_stk_qty(symbol):

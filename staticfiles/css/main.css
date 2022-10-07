@@ -6,6 +6,7 @@ body{
 
 .messages{
     color: red;
+    font-weight: bold;
 }
 .nav{
     background-color:#c1d4dd;
@@ -71,5 +72,4 @@ a:hover{
 small{
     color: #f7f9FB;
 }
-
 

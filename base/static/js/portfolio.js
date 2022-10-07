@@ -1,11 +1,4 @@
 
-// document.getElementById("sell_btn").addEventListener("click", disable_on_click);
-// document.getElementById("sell-form").addEventListener("submit", function(e){
-//     var element = document.getElementById('sell_btn');
-//     element.setAttribute("disabled", "disabled");
-//   	//do whatever an submit the form
-// });
-
 
 
  singlePortfolioTotal();

@@ -1,3 +1,4 @@
+
 <div class="stockSearch">
   <form class="d-flex" role="search" action="{% url 'home' %}" method="POST">
     {% csrf_token %}
@@ -81,7 +82,7 @@
         <div class="col">
           <h5>Quantity:</h5>
         </div>
-        <div class="col"><input class="form-control me-2" id="quantity" type="number" name="quantity" value=0></div>
+        <div class="col"><input class="form-control me-2" id="quantity" type="number" name="quantity" value=0 min="1" max="10000"></div>
       </div>
 
       <div class="row stockData"></div>

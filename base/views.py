@@ -1,16 +1,19 @@
 from django.shortcuts import render,redirect
 from .models import Stocks,User
-from .lib.api import getstock,get_all_tot_qty,save_action,get_stk_qty,get_user_amt
+from .lib.api import getstock,get_all_tot_qty,save_action,get_stk_qty,get_user_amt,save_user_amt
 from django.contrib import messages
 
-
+def reset_account(request):
+    reset_vlu = float(1000) 
+    if not save_user_amt('reset',reset_vlu):
+        messages.error(request,'Error Saving reset amt. Call Administrator!')
+    return redirect('home')
 
 def home(request):
     stock_info = {}
     all_stocks = get_all_tot_qty()
     amt = get_user_amt()
     
-  
     if request.method == 'POST' and 'search_btn' in request.POST:
         
         sym = request.POST.get('symbol_search')
@@ -21,7 +24,6 @@ def home(request):
         else:
             messages.error(request,'Please Enter A Valid Search Criteria')        
             return redirect('home')
-
 
     if request.method == 'POST' and 'snapshot_btn' in request.POST:
         all_stocks = get_all_tot_qty(True)
@@ -42,18 +44,16 @@ def success(request):
         current_price = request.POST.get('current_price')
         action = "Buy"
         
-       
         current_buy = (float(current_price) * float(qty)) 
         print(current_buy)
         if(float(amt) < float(current_buy)):
              messages.error(request,'Funds less then Buy Price') 
              return redirect('home')
-        
 
-
-
-        if not save_action(symbol,qty,current_price,action,current_buy):
-              messages.error(request,'Please Enter A Valid Stock')  
+        if not save_action(symbol,qty,current_price,action):
+            messages.error(request,'Please Enter A Valid Stock')
+        if not save_user_amt(action,current_buy):
+            messages.error(request,'Error Saving User Amt. Call Administrator!')        
         
     return redirect('home')
     
@@ -90,8 +90,10 @@ def sell_stock(request,symbol):
              messages.error(request,'Sell Qty greater Than Amt Owned!') 
              return redirect('shareinfo', symbol = symbol)
 
-        if not save_action(symbol,qty,current_price,action,current_sell):
+        if not save_action(symbol,qty,current_price,action):
             messages.error(request,'Please Enter A Valid Stock, or Qty')  
+        if not save_user_amt(action,current_sell):
+            messages.error(request,'Error Saving User Amt. Call Administrator!')
         
     return redirect('shareinfo', symbol = symbol)
 
