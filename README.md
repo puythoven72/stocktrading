@@ -9,7 +9,7 @@ This is a project I used to learn the fundamentals of python with django.
 ***Templates- Contains all the code html pages.
 ***Static- Contains JS and CSS files.
 
-**StockTrading - Global settings for App
+**StockTrading - Global settings for App 
 
 
 
