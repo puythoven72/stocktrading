@@ -33,4 +33,4 @@ websockets==10.3
 whitenoise==6.2.0
 yahoo-finance==1.4.0
 yarl==1.8.1
-yfinance==0.1.74
+yfinance==0.1.93
