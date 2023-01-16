@@ -12,10 +12,13 @@ def getstock(symbol):
         raw_json = json.dumps(msft.info)
         stock_data = json.loads(raw_json)
         return format_values(stock_data)
-    except:
+    except Exception as e:
+        print(e)
         print("An exception occurred in getstock")
         return stock_data
  
+
+
 
 
 def add_current_price(stock_dict):
