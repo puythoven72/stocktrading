@@ -13,7 +13,6 @@ def home(request):
     stock_info = {}
     all_stocks = get_all_tot_qty()
     amt = get_user_amt()
-    
     if request.method == 'POST' and 'search_btn' in request.POST:
         
         sym = request.POST.get('symbol_search')
